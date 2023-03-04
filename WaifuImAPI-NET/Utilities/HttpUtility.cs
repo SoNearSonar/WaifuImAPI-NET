@@ -6,7 +6,7 @@ namespace WaifuImAPI_NET.Utilities
 {
     public class HttpUtility
     {
-        public string CreateAPICall(string uri, WaifuImSettings settings = null)
+        public string CreateImageAPICall(string uri, WaifuImImageSettings settings = null)
         {
             if (settings != null)
             {
@@ -22,8 +22,7 @@ namespace WaifuImAPI_NET.Utilities
                 query.Add("orientation", settings.Orientation.GetEnumMemberValue());
                 query.Add("many", settings.ManyFiles.GetLowerString());
                 query.Add("full", settings.FullResult.GetLowerString());
-                string result =  uri + "/?" + query.ToString();
-                return result;
+                return uri + "/?" + query.ToString();
             }
 
             return uri;

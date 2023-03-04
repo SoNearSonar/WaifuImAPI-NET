@@ -9,9 +9,19 @@ namespace WaifuImAPI_NET
         private readonly string _uri = "https://api.waifu.im";
         HttpUtility _httpUtility = new HttpUtility();
 
-        public async Task<WaifuImImageList> GetImages(WaifuImSettings settings = null)
+        public async Task<WaifuImImageList> GetImages(WaifuImImageSettings settings = null)
         {
-            return await MakeAPICall<WaifuImImageList>(_httpUtility.CreateAPICall(_uri + "/search", settings));
+            return await MakeAPICall<WaifuImImageList>(_httpUtility.CreateImageAPICall(_uri + "/search", settings));
+        }
+
+        public async Task<WaifuImTagList> GetTags()
+        {
+            return await MakeAPICall<WaifuImTagList>(_uri + "/tags");
+        }
+
+        public async Task<WaifuImFullTagList> GetFullTags()
+        {
+            return await MakeAPICall<WaifuImFullTagList>(_uri + "/tags/?full=true");
         }
 
         private async Task<T?> MakeAPICall<T>(string apiCall)
