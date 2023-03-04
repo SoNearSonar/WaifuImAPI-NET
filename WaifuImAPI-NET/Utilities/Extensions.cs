@@ -17,6 +17,16 @@ namespace WaifuImAPI_NET.Utilities
                 ?.Value;
         }
 
+        public static string GetLowerString(this bool? value)
+        {
+            if (value == null)
+            {
+                return "null";
+            }
+
+            return value.ToString().ToLowerInvariant();
+        }
+
         public static string GetLowerString(this bool value)
         {
             return value.ToString().ToLowerInvariant();

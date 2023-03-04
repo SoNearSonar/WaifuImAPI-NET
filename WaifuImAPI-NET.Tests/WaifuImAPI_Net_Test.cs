@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WaifuImAPI_NET.Models.Enums;
 using WaifuImAPI_NET.Models.Objects;
 
 namespace WaifuImAPI_NET.Tests;
@@ -20,7 +21,13 @@ public class WaifuImAPI_Net_Test
         WaifuImManager manager = new WaifuImManager();
         WaifuImSettings settings = new WaifuImSettings()
         {
-            ManyFiles = true
+            ManyFiles = true,
+            IncludedTags = new Tags[]
+            {
+                Tags.Waifu,
+                Tags.Maid
+            },
+            IsNsfw = null
         };
 
         WaifuImImageList imageList = manager.GetImages(settings).Result;
