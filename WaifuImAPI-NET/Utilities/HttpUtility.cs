@@ -10,7 +10,6 @@ namespace WaifuImAPI_NET.Utilities
         {
             if (settings != null)
             {
-
                 NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
                 FormatTagArrayToString(query, "included_tags", settings.IncludedTags);
                 FormatTagArrayToString(query, "excluded_tags", settings.ExcludedTags);

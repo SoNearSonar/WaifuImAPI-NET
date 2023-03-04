@@ -6,12 +6,12 @@ namespace WaifuImAPI_NET
 {
     public class WaifuImManager
     {
-        private readonly string _uri = "https://api.waifu.im/search";
+        private readonly string _uri = "https://api.waifu.im";
         HttpUtility _httpUtility = new HttpUtility();
 
         public async Task<WaifuImImageList> GetImages(WaifuImSettings settings = null)
         {
-            return await MakeAPICall<WaifuImImageList>(_httpUtility.CreateAPICall(_uri, settings));
+            return await MakeAPICall<WaifuImImageList>(_httpUtility.CreateAPICall(_uri + "/search", settings));
         }
 
         private async Task<T?> MakeAPICall<T>(string apiCall)
