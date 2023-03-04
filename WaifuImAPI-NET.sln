@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaifuImAPI-NET", "WaifuImAPI-NET\WaifuImAPI-NET.csproj", "{1E8F755D-1A55-416A-BB88-A206A0CD01DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaifuImAPI-NET.Tests", "WaifuImAPI-NET.Tests\WaifuImAPI-NET.Tests.csproj", "{405365F7-AA8F-4A5C-9D95-4F73F3F4758E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E8F755D-1A55-416A-BB88-A206A0CD01DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E8F755D-1A55-416A-BB88-A206A0CD01DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E8F755D-1A55-416A-BB88-A206A0CD01DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E8F755D-1A55-416A-BB88-A206A0CD01DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{405365F7-AA8F-4A5C-9D95-4F73F3F4758E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405365F7-AA8F-4A5C-9D95-4F73F3F4758E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405365F7-AA8F-4A5C-9D95-4F73F3F4758E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405365F7-AA8F-4A5C-9D95-4F73F3F4758E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F15F342-D249-4158-951B-13F4AF503FD1}
+	EndGlobalSection
+EndGlobal
