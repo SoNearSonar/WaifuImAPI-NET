@@ -17,12 +17,12 @@ namespace WaifuImAPI_NET.Utilities
                 FormatStringArrayToString(query, "included_files", settings.IncludedFiles);
                 FormatStringArrayToString(query, "excluded_files", settings.ExcludedFiles);
 
-                query.Add("is_nsfw", settings.IsNsfw.ToString().ToLowerInvariant());
-                query.Add("gif", settings.OnlyGif.ToString().ToLowerInvariant());
-                query.Add("order_by", settings.OrderBy.ToString().ToUpperInvariant());
-                query.Add("orientation", settings.Orientation.ToString().ToUpperInvariant());
-                query.Add("many", settings.ManyFiles.ToString().ToLowerInvariant());
-                query.Add("full", settings.FullResult.ToString().ToLowerInvariant());
+                query.Add("is_nsfw", settings.IsNsfw.GetLowerString());
+                query.Add("gif", settings.OnlyGif.GetLowerString());
+                query.Add("order_by", settings.OrderBy.GetEnumMemberValue());
+                query.Add("orientation", settings.Orientation.GetEnumMemberValue());
+                query.Add("many", settings.ManyFiles.GetLowerString());
+                query.Add("full", settings.FullResult.GetLowerString());
                 string result =  uri + "/?" + query.ToString();
                 return result;
             }
@@ -34,7 +34,7 @@ namespace WaifuImAPI_NET.Utilities
         {
             foreach (Tags tag in tags)
             {
-                query.Add(key, tag.ToString());
+                query.Add(key, tag.GetEnumMemberValue());
             }
         }
 
