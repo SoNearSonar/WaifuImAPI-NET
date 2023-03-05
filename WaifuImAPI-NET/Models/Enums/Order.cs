@@ -4,7 +4,7 @@ namespace WaifuImAPI_NET.Models.Enums
 {
     public enum Order
     {
-        [EnumMember(Value = "FAVORURITE")] Favorite,
+        [EnumMember(Value = "FAVOURITES")] Favourites,
         [EnumMember(Value = "UPLOADED_AT")] UploadedAt,
         [EnumMember(Value = "RANDOM")] Random
     }
