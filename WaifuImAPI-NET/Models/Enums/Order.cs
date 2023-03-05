@@ -7,6 +7,6 @@ namespace WaifuImAPI_NET.Models.Enums
         [EnumMember(Value = "FAVOURITES")] Favourites,
         [EnumMember(Value = "UPLOADED_AT")] UploadedAt,
         [EnumMember(Value = "RANDOM")] Random,
-        [EnumMember(Value = "LIKED_AT")] Liked_At
+        [EnumMember(Value = "LIKED_AT")] LikedAt
     }
 }
