@@ -16,6 +16,7 @@ namespace WaifuImAPI_NET.Utilities
                 FormatStringArrayToString(query, "included_files", settings.IncludedFiles);
                 FormatStringArrayToString(query, "excluded_files", settings.ExcludedFiles);
 
+                query.Add("user_id", settings.UserId.ToString());
                 query.Add("is_nsfw", settings.IsNsfw.GetLowerString());
                 query.Add("gif", settings.OnlyGif.GetLowerString());
                 query.Add("order_by", settings.OrderBy.GetEnumMemberValue());

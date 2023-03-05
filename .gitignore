@@ -16,3 +16,5 @@ WaifuImAPI-NET.Tests/obj/Debug/net6.0/
 WaifuImAPI-NET.Tests/obj/
 
 WaifuImAPI-NET/bin/Debug/net6.0/
+
+.env

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using WaifuImAPI_NET.Models.Enums;
 
 namespace WaifuImAPI_NET.Models.Objects
 {

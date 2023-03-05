@@ -7,11 +7,20 @@ namespace WaifuImAPI_NET
     public class WaifuImManager
     {
         private readonly string _uri = "https://api.waifu.im";
-        HttpUtility _httpUtility = new HttpUtility();
+        private readonly HttpUtility _httpUtility = new HttpUtility();
+        private string _token;
 
-        public async Task<WaifuImImageList> GetImages(WaifuImImageSettings settings = null)
+        public WaifuImManager() { }
+
+        public WaifuImManager(string token)
         {
-            return await MakeAPICall<WaifuImImageList>(_httpUtility.CreateImageAPICall(_uri + "/search", settings));
+            _token = token;
+        }
+
+        public async Task<WaifuImImageList> GetImages(WaifuImImageSettings? settings = null)
+        {
+            string apiCall = _httpUtility.CreateImageAPICall(_uri + "/search", settings);
+            return await MakeAPICall<WaifuImImageList>(apiCall);
         }
 
         public async Task<WaifuImTagList> GetTags()
@@ -24,21 +33,35 @@ namespace WaifuImAPI_NET
             return await MakeAPICall<WaifuImFullTagList>(_uri + "/tags/?full=true");
         }
 
-        private async Task<T?> MakeAPICall<T>(string apiCall)
+        public async Task<WaifuImImageList> GetFavourites(WaifuImImageSettings? settings = null)
+        {
+            string apiCall = _httpUtility.CreateImageAPICall(_uri + "/fav", settings);
+            if (!string.IsNullOrWhiteSpace(_token))
+            {
+                return await MakeAPICall<WaifuImImageList>(apiCall, _token);
+            }
+            else
+            {
+                throw new HttpRequestException("GetFavourites() requires a token to use");
+            }
+        }
+
+        private async Task<T?> MakeAPICall<T>(string apiCall, string token = null)
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("Accept-Version", "v4");
             client.DefaultRequestHeaders.Add("User-Agent", "WaifuImAPI-NET/1.0");
-            HttpResponseMessage message = await client.GetAsync(apiCall);
-            
-            if (message.IsSuccessStatusCode)
+            if (token != null)
             {
-                string response = await message.Content.ReadAsStringAsync();
-                return DeserializeData<T>(response);
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
             }
 
-            return default;
+            HttpResponseMessage message = await client.GetAsync(apiCall);
+            message.EnsureSuccessStatusCode();
+
+            string response = await message.Content.ReadAsStringAsync();
+            return DeserializeData<T>(response);
         }
 
         private T DeserializeData<T>(string json)
