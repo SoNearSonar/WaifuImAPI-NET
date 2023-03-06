@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WaifuImAPI_NET.Models.Objects
+namespace WaifuImAPI_NET.Models.Objects.Lists
 {
     public class WaifuImImageList
     {
