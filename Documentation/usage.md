@@ -76,7 +76,7 @@ foreach (WaifuImTag tag in tagList.VersatileTags)
 ## Favorites
 Below are examples of C# API calls for utilizing favorites:
 
-NOTE: Favorites requires getting an Authorization token and storing it somewhere in any projects that are made. It is not recommended to store it as plain-text or on a open source repository. More information can be found [here]()
+NOTE: Favorites requires getting an Authorization token and storing it somewhere in any projects that are made. It is not recommended to store it as plain-text or on a open source repository. A token can be obtained from logging in [here](https://www.waifu.im/dashboard/)
 
 ### Get Favorites
 Getting list of favorited images:
@@ -113,6 +113,8 @@ foreach (WaifuImImage image in favImageList.Images)
 }
 ```
 
+NOTE: A WaifuImFavoriteSettings object is required to use the following method calls and an image ID must be provided. Exceptions will be thrown depending on what happens in an API call
+
 ### Insert Favorites
 Adding a favorite to your favorites:
 ```csharp
@@ -125,8 +127,6 @@ WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
 WaifuImFavorite favorite = await client.InsertFavoriteAsync(token, settings);
 ```
 
-NOTE: A WaifuImFavoriteSettings object is required to use this method call. If the favorited image exists an exception will be thrown.
-
 ### Delete Favorites
 Removing a favorite to your favorites:
 ```csharp
@@ -138,8 +138,6 @@ WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
 };
 WaifuImFavorite favorite = await client.DeleteFavoriteAsync(token, settings)
 ```
-
-NOTE: A WaifuImFavoriteSettings object is required to use this method call. If the favorited image does not exist an exception will be thrown.
 
 ### Toggle Favorites
 Changing a favorite to your favorites:
