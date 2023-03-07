@@ -2,6 +2,9 @@
 
 namespace WaifuImAPI_NET.Models.Enums
 {
+    /// <summary>
+    /// The tag name that images can have
+    /// </summary>
     public enum Tags
     {
         // Versatile / SFW
