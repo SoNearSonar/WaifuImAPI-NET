@@ -7,7 +7,7 @@ namespace WaifuImAPI_NET
     [Headers("Accept-Version: v5", "User-Agent: WaifuImAPI-NET/1.0", "Accept: application/json")]
     public interface IWaifuImClient
     {
-        [Get("/search/")]
+        [Get("/search")]
         Task<WaifuImImageList> GetImagesAsync(WaifuImSearchSettings settings = null);
 
         [Get("/tags")]
