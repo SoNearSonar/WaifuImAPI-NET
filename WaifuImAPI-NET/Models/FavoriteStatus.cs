@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace WaifuImAPI_NET.Models.Enums
+namespace WaifuImAPI_NET.Models
 {
     /// <summary>
     /// A status to represent the result of a API call

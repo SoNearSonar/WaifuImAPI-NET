@@ -1,6 +1,6 @@
 ﻿using Refit;
 
-namespace WaifuImAPI_NET.Models.Objects
+namespace WaifuImAPI_NET.Models
 {
     /// <summary>
     ///   An object holding favorite information for favorites

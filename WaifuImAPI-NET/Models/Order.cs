@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace WaifuImAPI_NET.Models.Enums
+namespace WaifuImAPI_NET.Models
 {
     /// <summary>
     /// The order to sort images in a search by

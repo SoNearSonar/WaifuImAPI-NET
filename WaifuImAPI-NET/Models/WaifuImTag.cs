@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WaifuImAPI_NET.Models.Objects
+namespace WaifuImAPI_NET.Models
 {
     /// <summary>
     /// An object holding information a tag

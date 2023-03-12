@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Refit;
-using WaifuImAPI_NET.Models.Objects;
-using WaifuImAPI_NET.Models.Objects.Lists;
+using WaifuImAPI_NET.Models;
 
 namespace WaifuImAPI_NET
 {

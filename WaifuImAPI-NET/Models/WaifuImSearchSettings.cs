@@ -1,7 +1,6 @@
 ﻿using Refit;
-using WaifuImAPI_NET.Models.Enums;
 
-namespace WaifuImAPI_NET.Models.Objects
+namespace WaifuImAPI_NET.Models
 {
     /// <summary>
     ///   An object holding search filters for image searches

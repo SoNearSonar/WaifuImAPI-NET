@@ -18,3 +18,13 @@ WaifuImAPI-NET.Tests/obj/
 WaifuImAPI-NET/bin/Debug/net6.0/
 
 .env
+
+WaifuImAPI-NET.Tests/bin/Release/net6.0/
+
+WaifuImAPI-NET/bin/Debug/
+
+WaifuImAPI-NET/bin/Release/net6.0/
+
+WaifuImAPI-NET/bin/Release/
+
+WaifuImAPI-NET/WaifuImAPI-NET - Backup.csproj

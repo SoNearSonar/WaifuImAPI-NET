@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace WaifuImAPI_NET.Models.Enums
+namespace WaifuImAPI_NET.Models
 {
     /// <summary>
     /// The tag name that images can have

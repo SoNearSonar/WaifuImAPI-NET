@@ -8,4 +8,4 @@
 [![WaifuImAPI-NET NuGet](https://img.shields.io/nuget/vpre/WaifuImAPI-NET?label=WaifuImAPI-NET&style=flat-square)](https://www.nuget.org/packages/WaifuImAPI-NET/)
 
 ## Documentation:
-[Usage](Documentation/usage.md)
+[Usage](https://github.com/SoNearSonar/WaifuImAPI-NET/Documentation/usage.md)

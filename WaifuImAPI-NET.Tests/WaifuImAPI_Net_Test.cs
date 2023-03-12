@@ -1,8 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Refit;
-using WaifuImAPI_NET.Models.Enums;
-using WaifuImAPI_NET.Models.Objects;
-using WaifuImAPI_NET.Models.Objects.Lists;
+using WaifuImAPI_NET.Models;
 
 namespace WaifuImAPI_NET.Tests;
 
@@ -83,6 +81,7 @@ public class WaifuImAPI_Net_Test
         WaifuImSearchSettings settings = new WaifuImSearchSettings()
         {
             IsNsfw = false,
+            ManyFiles = false
         };
 
         WaifuImImageList imageList = client.GetFavoritesAsync(token, settings).Result;

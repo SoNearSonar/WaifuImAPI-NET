@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using WaifuImAPI_NET.Models.Enums;
 
-namespace WaifuImAPI_NET.Models.Objects.Lists
+namespace WaifuImAPI_NET.Models
 {
     /// <summary>
     ///   An object holding a list of versatile and nsfw tag names

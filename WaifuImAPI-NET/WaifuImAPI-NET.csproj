@@ -5,7 +5,22 @@
     <RootNamespace>WaifuImAPI_NET</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>WaifuIM API .NET</Title>
+    <Authors>SoNearSonar</Authors>
+    <Description>A C# API wrapper for the website waifu.im. A website that has images of anime drawings</Description>
+    <PackageProjectUrl>https://github.com/SoNearSonar/WaifuImAPI-NET</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/SoNearSonar/WaifuImAPI-NET</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>c#,api,waifu,image,anime</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />

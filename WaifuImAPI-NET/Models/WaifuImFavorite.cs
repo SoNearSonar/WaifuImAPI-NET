@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using WaifuImAPI_NET.Models.Enums;
 
-namespace WaifuImAPI_NET.Models.Objects
+namespace WaifuImAPI_NET.Models
 {
     /// <summary>
     ///   An object holding the status of a favorite API call
