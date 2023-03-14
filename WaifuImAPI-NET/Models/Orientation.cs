@@ -8,6 +8,11 @@ namespace WaifuImAPI_NET.Models
     public enum Orientation
     {
         /// <summary>
+        /// Either landscape or portrait
+        /// </summary>
+        [EnumMember(Value = "RANDOM")] Random,
+
+        /// <summary>
         /// Landscape mode (width is greater than height)
         /// </summary>
         [EnumMember(Value = "LANDSCAPE")] Landscape,
