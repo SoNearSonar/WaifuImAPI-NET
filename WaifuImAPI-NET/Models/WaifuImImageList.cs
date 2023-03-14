@@ -11,6 +11,6 @@ namespace WaifuImAPI_NET.Models
         /// The list of images returned from the search
         /// </summary>
         [JsonProperty(PropertyName = "images")]
-        public List<WaifuImImage>? Images { get; set; } = default!;
+        public List<WaifuImImage> Images { get; set; } = default!;
     }
 }
