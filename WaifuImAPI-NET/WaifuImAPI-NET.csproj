@@ -13,6 +13,10 @@
     <RepositoryUrl>https://github.com/SoNearSonar/WaifuImAPI-NET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>c#,api,waifu,image,anime</PackageTags>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>1.0.1: Adjusted namespace of objects, putting them in a Models folder only
+
+1.0.2: Removed Nullable properties on objects, replacing them with a default! call to get </PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

@@ -11,12 +11,12 @@ namespace WaifuImAPI_NET.Models
         /// The list of tags that are versatile and/or safe for work
         /// </summary>
         [JsonProperty(PropertyName = "versatile")]
-        public WaifuImTag[]? VersatileTags { get; set; }
+        public WaifuImTag[] VersatileTags { get; set; } = default!;
 
         /// <summary>
         /// The list of tags that are not safe for work
         /// </summary>
-        [JsonProperty(PropertyName = "nsfw")]
-        public WaifuImTag[]? NsfwTags { get; set; }
+        [JsonProperty(PropertyName = "nsfw")] 
+        public WaifuImTag[] NsfwTags { get; set; } = default!;
     }
 }

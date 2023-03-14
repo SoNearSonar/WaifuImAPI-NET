@@ -30,7 +30,7 @@ public class WaifuImAPI_Net_Test
                 Tags.Waifu,
                 Tags.Maid
             },
-            IsNsfw = null
+            IsNsfw = false
         };
 
         WaifuImImageList imageList = client.GetImagesAsync(settings).Result;
