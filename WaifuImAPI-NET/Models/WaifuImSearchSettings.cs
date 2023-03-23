@@ -1,4 +1,4 @@
-﻿using Refit;
+using Refit;
 
 namespace WaifuImAPI_NET.Models
 {
@@ -54,6 +54,24 @@ namespace WaifuImAPI_NET.Models
         /// <value><see cref="Enums.Orientation"/></value>
         [AliasAs("orientation")]
         public Orientation? Orientation { get; set; } = null;
+
+        /// <summary>
+        ///   The preferred height for an image
+        /// </summary>
+        [AliasAs("height")]
+        public string? Height { get; set; } = null;
+
+        /// <summary>
+        ///   The preferred width for an image
+        /// </summary>
+        [AliasAs("width")]
+        public string? Width { get; set; } = null;
+
+        /// <summary>
+        ///   The size in bytes for an image
+        /// </summary>
+        [AliasAs("byte_size")]
+        public string? ByteSize { get; set; } = null;
 
         /// <summary>
         ///   If the image search should return at most 30 images meeting the search criteria

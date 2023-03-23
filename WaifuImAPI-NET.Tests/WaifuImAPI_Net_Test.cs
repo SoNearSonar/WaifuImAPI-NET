@@ -30,13 +30,16 @@ public class WaifuImAPI_Net_Test
                 Tags.Waifu,
                 Tags.Maid
             },
+            Height = ">1000",
+            Width = "<1000",
+            ByteSize = ">500000",
             Orientation = Orientation.Random,
             IsNsfw = null
         };
 
         WaifuImImageList imageList = client.GetImagesAsync(settings).Result;
         Assert.IsNotNull(imageList);
-        Assert.IsTrue(imageList.Images.Count == 30);
+        Assert.IsTrue(imageList.Images.Count == 8);
     }
 
     [TestMethod]

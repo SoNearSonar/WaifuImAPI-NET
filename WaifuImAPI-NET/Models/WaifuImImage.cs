@@ -68,6 +68,12 @@ namespace WaifuImAPI_NET.Models
         public uint Width { get; set; } = default!;
 
         /// <summary>
+        ///   The size in bytes for an image
+        /// </summary>
+        [JsonProperty(PropertyName = "byte_size")]
+        public ulong ByteSize { get; set; } = default!;
+
+        /// <summary>
         ///   The height of an image
         /// </summary>
         [JsonProperty(PropertyName = "height")]
