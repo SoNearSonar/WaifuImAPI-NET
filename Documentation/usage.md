@@ -32,6 +32,9 @@ WaifuImSearchSettings settings = new WaifuImSearchSettings()
 		Tags.Waifu,
 		Tags.Maid
 	},
+	Height = ">1000",
+	Width = "<1000",
+	ByteSize = ">500000",
 	IsNsfw = false
 };
 WaifuImImageList imageList = await client.GetImagesAsync();
