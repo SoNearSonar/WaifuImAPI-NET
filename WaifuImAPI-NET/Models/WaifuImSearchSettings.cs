@@ -1,4 +1,4 @@
-using Refit;
+﻿using Refit;
 
 namespace WaifuImAPI_NET.Models
 {
@@ -11,7 +11,7 @@ namespace WaifuImAPI_NET.Models
         ///   The user ID to be used when searching
         /// </summary>
         [AliasAs("user_id")]
-        public uint? UserId { get; set; } = null;
+        public ulong? UserId { get; set; } = null;
 
         /// <summary>
         ///   The tags to be included with image searches

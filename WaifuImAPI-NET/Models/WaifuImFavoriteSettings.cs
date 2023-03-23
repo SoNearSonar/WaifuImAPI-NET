@@ -11,12 +11,12 @@ namespace WaifuImAPI_NET.Models
         ///   The user ID to modify favorites for
         /// </summary>
         [AliasAs("user_id")]
-        public uint? UserId { get; set; } = null;
+        public ulong? UserId { get; set; } = null;
 
         /// <summary>
         ///   The image ID to modify favorites for a user
         /// </summary>
         [AliasAs("image_id")]
-        public uint ImageId { get; set; }
+        public ulong ImageId { get; set; }
     }
 }
