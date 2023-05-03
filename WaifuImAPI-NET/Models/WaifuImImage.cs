@@ -96,5 +96,11 @@ namespace WaifuImAPI_NET.Models
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public WaifuImTag[] Tags { get; set; } = default!;
+
+        /// <summary>
+        ///   The artist who created the image
+        /// </summary>
+        [JsonProperty(PropertyName = "artist")]
+        public WaifuImArtist Artist { get; set; } = default!;
     }
 }

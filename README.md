@@ -1,5 +1,5 @@
 # WaifuImAPI-NET
-## A C# API wrapper written in .NET for the website waifu.im. A website that has images of anime drawings
+## A client for Waifu.IM's web API, written in C#/NET. A website which has anime drawings
 
 ## Credits:
 - [Buco](https://github.com/Buco7854) - [Waifu.IM](https://www.waifu.im)

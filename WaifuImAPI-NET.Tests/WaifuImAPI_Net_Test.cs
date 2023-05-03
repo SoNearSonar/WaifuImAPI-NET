@@ -19,6 +19,23 @@ public class WaifuImAPI_Net_Test
     }
 
     [TestMethod]
+    public void TestGetImageWithSettings_SpecificFile_ReturnsImageJSON()
+    {
+        WaifuImClient client = new WaifuImClient();
+        WaifuImSearchSettings settings = new WaifuImSearchSettings()
+        {
+            IncludedFiles = new string[]
+            {
+                "8108"
+            }
+        };
+        WaifuImImageList imageList = client.GetImagesAsync(settings).Result;
+        Assert.IsNotNull(imageList);
+        Assert.IsTrue(imageList.Images.Count == 1);
+        Assert.IsTrue(imageList.Images[0].Artist.Name.Equals("fourthwallzart"));
+    }
+
+    [TestMethod]
     public void TestGetImageWithSettings_ReturnsImageJSON()
     {
         WaifuImClient client = new WaifuImClient();
