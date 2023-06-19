@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace WaifuImAPI_NET.Models
 {
@@ -11,7 +11,7 @@ namespace WaifuImAPI_NET.Models
         /// The result of the favorite API call
         /// </summary>
         /// <value><see cref="Enums.FavoriteStatus"/></value>
-        [JsonProperty(PropertyName = "state")]
+        [JsonPropertyName("state")]
         public FavoriteStatus FavoriteStatus { get; set; }
     }
 }

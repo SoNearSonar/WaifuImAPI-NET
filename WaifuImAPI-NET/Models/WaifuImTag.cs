@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace WaifuImAPI_NET.Models
 {
@@ -10,25 +10,25 @@ namespace WaifuImAPI_NET.Models
         /// <summary>
         ///   An ID for the tag
         /// </summary>
-        [JsonProperty(PropertyName = "tag_id")]
+        [JsonPropertyName("tag_id")]
         public uint TagId { get; set; } = default!;
 
         /// <summary>
         ///   A name for the tag
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
         ///   A description for the tag
         /// </summary>
-        [JsonProperty(PropertyName = "description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; } = default!;
 
         /// <summary>
         ///   A value representing if the tag is considered not safe for work
         /// </summary>
-        [JsonProperty(PropertyName = "is_nsfw")]
+        [JsonPropertyName("is_nsfw")]
         public bool IsNsfw { get; set; } = default!;
     }
 }

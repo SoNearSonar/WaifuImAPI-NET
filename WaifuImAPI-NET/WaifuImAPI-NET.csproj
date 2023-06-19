@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <Title>WaifuIM API .NET</Title>
     <Authors>SoNearSonar</Authors>
-    <Description>A C# API wrapper for the website waifu.im. A website that has images of anime drawings</Description>
+    <Description>A client for Waifu.IM's web API, written in C#/NET. A website which has anime drawings</Description>
     <PackageProjectUrl>https://github.com/SoNearSonar/WaifuImAPI-NET</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/SoNearSonar/WaifuImAPI-NET</RepositoryUrl>
@@ -30,9 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="Refit" Version="6.3.2" />
-    <PackageReference Include="Refit.Newtonsoft.Json" Version="6.3.2" />
+    <PackageReference Include="Macross.Json.Extensions" Version="3.0.0" />
   </ItemGroup>
 
 </Project>

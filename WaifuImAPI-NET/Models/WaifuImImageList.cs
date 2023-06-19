@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace WaifuImAPI_NET.Models
 {
@@ -10,7 +10,7 @@ namespace WaifuImAPI_NET.Models
         /// <summary>
         /// The list of images returned from the search
         /// </summary>
-        [JsonProperty(PropertyName = "images")]
+        [JsonPropertyName("images")]
         public List<WaifuImImage> Images { get; set; } = default!;
     }
 }

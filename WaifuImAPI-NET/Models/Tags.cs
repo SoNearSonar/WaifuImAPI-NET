@@ -1,13 +1,15 @@
 ﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace WaifuImAPI_NET.Models
 {
     /// <summary>
     /// The tag name that images can have
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum Tags
     {
-        // Versatile / SFW
+        // Versatile
         [EnumMember(Value = "maid")] Maid,
         [EnumMember(Value = "waifu")] Waifu,
         [EnumMember(Value = "marin-kitagawa")] MarinKitagawa,

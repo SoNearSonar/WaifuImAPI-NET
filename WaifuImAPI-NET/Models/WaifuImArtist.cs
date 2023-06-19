@@ -1,9 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace WaifuImAPI_NET.Models
 {
@@ -15,37 +10,37 @@ namespace WaifuImAPI_NET.Models
         /// <summary>
         ///   The numerical id of the artist
         /// </summary>
-        [JsonProperty(PropertyName = "artist_id")]
+        [JsonPropertyName("artist_id")]
         public uint Id { get; set; } = default!;
 
         /// <summary>
         ///   The name of the artist
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
         ///   The artist's Patreon url
         /// </summary>
-        [JsonProperty(PropertyName = "patreon")]
+        [JsonPropertyName("patreon")]
         public string PatreonLink { get; set; } = default!;
 
         /// <summary>
         ///   The artist's Pixiv url
         /// </summary>
-        [JsonProperty(PropertyName = "pixiv")]
+        [JsonPropertyName("pixiv")]
         public string PixivLink { get; set; } = default!;
 
         /// <summary>
         ///   The artist's Twitter url
         /// </summary>
-        [JsonProperty(PropertyName = "twitter")]
+        [JsonPropertyName("twitter")]
         public string TwitterLink { get; set; } = default!;
 
         /// <summary>
         ///   The artist's DeviantArt url
         /// </summary>
-        [JsonProperty(PropertyName = "deviant_art")]
+        [JsonPropertyName("deviant_art")]
         public string DeviantArtLink { get; set; } = default!;
     }
 }

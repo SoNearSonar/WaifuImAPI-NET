@@ -1,4 +1,4 @@
-﻿using Refit;
+﻿using System.Text.Json.Serialization;
 
 namespace WaifuImAPI_NET.Models
 {
@@ -10,13 +10,15 @@ namespace WaifuImAPI_NET.Models
         /// <summary>
         ///   The user ID to modify favorites for
         /// </summary>
-        [AliasAs("user_id")]
+        /// 
+        [JsonPropertyName("user_id")]
         public ulong? UserId { get; set; } = null;
 
         /// <summary>
         ///   The image ID to modify favorites for a user
         /// </summary>
-        [AliasAs("image_id")]
+        /// 
+        [JsonPropertyName("image_id")]
         public ulong ImageId { get; set; }
     }
 }
