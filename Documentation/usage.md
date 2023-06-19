@@ -10,6 +10,7 @@ Below are examples of C# API calls for getting images:
 Getting image(s) with default settings:
 ```csharp
 WaifuClient client = new WaifuClient();
+
 WaifuImImageList imageList = await client.GetImagesAsync();
 
 foreach (WaifuImImage image in imageList.Images)
@@ -37,6 +38,7 @@ WaifuImSearchSettings settings = new WaifuImSearchSettings()
 	ByteSize = ">500000",
 	IsNsfw = false
 };
+
 WaifuImImageList imageList = await client.GetImagesAsync();
 
 foreach (WaifuImImage image in imageList.Images)
@@ -54,6 +56,7 @@ Below are examples of C# API calls for getting tags:
 Getting list of simple tags (not full tags):
 ```csharp
 WaifuClient client = new WaifuClient();
+
 WaifuImTagList tagList = await client.GetTagsAsync();
 
 foreach (Tags tag in tagList.VersatileTags)
@@ -65,6 +68,7 @@ foreach (Tags tag in tagList.VersatileTags)
 Getting list of full tags:
 ```csharp
 WaifuClient client = new WaifuClient();
+
 WaifuImFullTagList tagList = await client.GetFullTagsAsync();
 
 foreach (WaifuImTag tag in tagList.VersatileTags)
@@ -84,9 +88,9 @@ NOTE: Favorites requires getting an Authorization token and storing it somewhere
 ### Get Favorites
 Getting list of favorited images:
 ```csharp
-WaifuImClient client = new WaifuImClient();
-string token = "token";
-WaifuImImageList favImageList = client.GetFavoritesAsync(token);
+WaifuImClient client = new WaifuImClient("token");
+
+WaifuImImageList favImageList = client.GetFavoritesAsync();
 
 foreach (WaifuImImage image in favImageList.Images)
 {
@@ -99,13 +103,13 @@ foreach (WaifuImImage image in favImageList.Images)
 
 Getting list of favorited images with user-set settings:
 ```csharp
-WaifuImClient client = new WaifuImClient();
+WaifuImClient client = new WaifuImClient("token");
 WaifuImSearchSettings settings = new WaifuImSearchSettings()
 {
 	IsNsfw = false
 };
-string token = "token";
-WaifuImImageList favImageList = client.GetFavoritesAsync(token, settings);
+
+WaifuImImageList favImageList = client.GetFavoritesAsync(settings);
 
 foreach (WaifuImImage image in favImageList.Images)
 {
@@ -121,35 +125,34 @@ NOTE: A WaifuImFavoriteSettings object is required to use the following method c
 ### Insert Favorites
 Adding a favorite to your favorites:
 ```csharp
-WaifuImClient client = new WaifuImClient();
-string token = "token";
+WaifuImClient client = new WaifuImClient("token");
 WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
 {
 	ImageId = 0001
 };
-WaifuImFavorite favorite = await client.InsertFavoriteAsync(token, settings);
+
+WaifuImFavorite favorite = await client.InsertFavoriteAsync(settings);
 ```
 
 ### Delete Favorites
 Removing a favorite to your favorites:
 ```csharp
-WaifuImClient client = new WaifuImClient();
-string token = "token";
+WaifuImClient client = new WaifuImClient("token");
 WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
 {
 	ImageId = 0001
 };
-WaifuImFavorite favorite = await client.DeleteFavoriteAsync(token, settings)
+
+WaifuImFavorite favorite = await client.DeleteFavoriteAsync(settings)
 ```
 
 ### Toggle Favorites
 Changing a favorite to your favorites:
 ```csharp
-WaifuImClient client = new WaifuImClient();
-string token = "token";
+WaifuImClient client = new WaifuImClient("token");
 WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
 {
 	ImageId = 0001
 };
-WaifuImFavorite favorite = await client.ToggleFavoriteAsync(token, settings);
+WaifuImFavorite favorite = await client.ToggleFavoriteAsync(settings);
 ```
