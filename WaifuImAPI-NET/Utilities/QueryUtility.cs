@@ -15,8 +15,8 @@ namespace WaifuImAPI_NET.Utilities
                 query += AddQueryParam("gif", settings.OnlyGif);
                 query += AddQueryParam("order_by", settings.OrderBy);
                 query += AddQueryParam("orientation", settings.Orientation);
-                query += AddQueryParam("height", settings.ExcludedTags);
-                query += AddQueryParam("width", settings.ExcludedTags);
+                query += AddQueryParam("height", settings.Height);
+                query += AddQueryParam("width", settings.Width);
                 query += AddQueryParam("byte_size", settings.ByteSize);
                 query += AddQueryParam("many", settings.ManyFiles);
                 query += AddQueryParam("full", settings.FullResult);

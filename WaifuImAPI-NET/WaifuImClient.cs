@@ -101,38 +101,52 @@ namespace WaifuImAPI_NET
 
         private async Task<T> MakeApiGetCall<T>(string url, WaifuImSearchSettings settings = null)
         {
+            // Check if the provided settings are not empty, format them into a query string if so
             string query = string.Empty;
             if (settings != null)
             {
+                // A utility method formats all the setting properties to a string
+                // E.g.: (url)?height=1000&width=1000
                 query = QueryUtility.FormatQueryParams(settings);
             }
 
+            // Create a new response message to hit the endpoint that this call is targeting
+            // This is for a GET request
             HttpResponseMessage message = await CreateGetApiMessage(url + query);
             if (message.StatusCode == HttpStatusCode.OK)
             {
+                // Get the JSON from the response and make it into a C# object
                 string response = await message.Content.ReadAsStringAsync();
                 return DeserializeObject<T>(response);
             }
 
-            throw new HttpRequestException($"{message.StatusCode} code - Request was not successful");
+            // Throw an error if the request was not successful (Should be a 200 OK)
+            throw new HttpRequestException($"{(int)message.StatusCode} {message.StatusCode} code - Request was not successful");
         }
 
         private async Task<T> MakeApiGetCallForFavorite<T>(string url, WaifuImSearchSettings settings = null)
         {
+            // Check if the provided settings are not empty, format them into a query string if so
             string query = string.Empty;
             if (settings != null)
             {
+                // A utility method formats all the setting properties to a string
+                // E.g.: (url)?image_id=0001
                 query = QueryUtility.FormatQueryParams(settings);
             }
 
+            // Create a new response message to hit the endpoint that this call is targeting
+            // This is for a GET request
             HttpResponseMessage message = await CreateApiGetMessageForFavorite(url + query, _token);
             if (message.StatusCode == HttpStatusCode.OK)
             {
+                // Get the JSON from the response and make it into a C# object
                 string response = await message.Content.ReadAsStringAsync();
                 return DeserializeObject<T>(response);
             }
 
-            throw new HttpRequestException($"{message.StatusCode} code - Request was not successful");
+            // Throw an error if the request was not successful (Should be a 200 OK)
+            throw new HttpRequestException($"{(int)message.StatusCode} {message.StatusCode} code - Request was not successful");
         }
 
         private async Task<T> MakeApiPostCallForFavorite<T>(string url, WaifuImFavoriteSettings settings)
@@ -146,6 +160,8 @@ namespace WaifuImAPI_NET
                 throw new HttpRequestException("You need to pass in an image ID within a settings object");
             }
 
+            // Create a new response message to hit the endpoint that this call is targeting
+            // This is for a POST request
             HttpResponseMessage message = await CreateApiPostMessageForFavorite(url, _token, settings);
             if (message.StatusCode == HttpStatusCode.OK)
             {
@@ -153,20 +169,25 @@ namespace WaifuImAPI_NET
                 return DeserializeObject<T>(response);
             }
 
-            throw new HttpRequestException($"{message.StatusCode} code - Request was not successful");
+            // Throw an error if the request was not successful (Should be a 200 OK)
+            throw new HttpRequestException($"{(int)message.StatusCode} {message.StatusCode} code - Request was not successful");
         }
 
         private async Task<T> MakeApiDeleteCallForFavorite<T>(string url, WaifuImFavoriteSettings settings)
         {
+            // If a token is not provided this API call will fail
             if (string.IsNullOrEmpty(_token))
             {
                 throw new HttpRequestException("A token is required to use this endpoint");
             }
+            // If this request has no settings this API call will also fail
             else if (settings == null)
             {
                 throw new HttpRequestException("You need to pass in an image ID within a settings object");
             }
 
+            // Create a new response message to hit the endpoint that this call is targeting
+            // This is for a POST request (Recent update made this DELETE call a POST)
             HttpResponseMessage message = await CreateApiDeleteMessageForFavorite(url, _token, settings);
             if (message.StatusCode == HttpStatusCode.OK)
             {
@@ -174,18 +195,25 @@ namespace WaifuImAPI_NET
                 return DeserializeObject<T>(response);
             }
 
-            throw new HttpRequestException($"{message.StatusCode} code - Request was not successful");
+            // Throw an error if the request was not successful (Should be a 200 OK)
+            throw new HttpRequestException($"{(int)message.StatusCode} {message.StatusCode} code - Request was not successful");
         }
 
         private T DeserializeObject<T>(string contents)
         {
+            // Creates a new object that will deserialize the information using a serializer defaults property
             JsonSerializerOptions options = new JsonSerializerOptions(JsonSerializerDefaults.Web);
+
+            // Add a new converter that is able to read enums as strings (extension)
             options.Converters.Add(new JsonStringEnumMemberConverter());
+
+            // Deserialize the contents with the provided options and return it to the calling method
             return JsonSerializer.Deserialize<T>(contents, options);
         }
 
         private async Task<HttpResponseMessage> CreateGetApiMessage(string url)
         {
+            // Create a HttpClient object to handle the request with additional request headers
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("Accept-Version", "v5");
@@ -195,6 +223,7 @@ namespace WaifuImAPI_NET
 
         private async Task<HttpResponseMessage> CreateApiGetMessageForFavorite(string url, string token)
         {
+            // Create a HttpClient object to handle the request with additional request headers
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("Accept-Version", "v5");
@@ -205,6 +234,7 @@ namespace WaifuImAPI_NET
 
         private async Task<HttpResponseMessage> CreateApiPostMessageForFavorite(string url, string token, WaifuImFavoriteSettings settings)
         {
+            // Create a HttpClient object to handle the request with additional request headers
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("Accept-Version", "v5");
@@ -215,16 +245,19 @@ namespace WaifuImAPI_NET
 
         private async Task<HttpResponseMessage> CreateApiDeleteMessageForFavorite(string url, string token, WaifuImFavoriteSettings settings)
         {
+            // Create a HttpClient object to handle the request with additional request headers
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("Accept-Version", "v5");
             client.DefaultRequestHeaders.Add("User-Agent", "WaifuImAPI-NET/2.0");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
+            // Create a request message that holds our information that we want to pass
+            // In this case we need to format the settings object specifically for this call
             HttpRequestMessage message = new HttpRequestMessage()
             {
                 Content = new StringContent(JsonSerializer.Serialize(settings), Encoding.UTF8, "application/json"),
-                Method = HttpMethod.Delete,
+                Method = HttpMethod.Post,
                 RequestUri = new Uri(url)
             };
             return await client.SendAsync(message);
