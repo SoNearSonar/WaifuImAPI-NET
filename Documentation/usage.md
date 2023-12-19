@@ -3,6 +3,7 @@ WaifuImAPI-NET is a C# API wrapper for Waifu.IM's API. It supports the following
 - Getting images
 - Getting tags and full tags
 - Getting, inserting, deleting, and toggling favorites
+- Reporting images
 
 ## Images
 Below are examples of C# API calls for getting images:
