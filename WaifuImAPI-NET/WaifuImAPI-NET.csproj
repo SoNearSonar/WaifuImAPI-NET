@@ -13,10 +13,11 @@
     <RepositoryUrl>https://github.com/SoNearSonar/WaifuImAPI-NET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>c#,api,waifu,image,anime</PackageTags>
-    <Version>2.0.0</Version>
-    <PackageReleaseNotes>- Token is moved to WaifuImClient from setting objects
-- Removed 3rd party libraries
-- Added an extension for System.Text.Json.Serialization</PackageReleaseNotes>
+    <Version>2.1</Version>
+    <PackageReleaseNotes>- Report image endpoint added (Requires token, image ID, and reason for reporting)
+- Updated internal documentation for endpoint links
+- Whitespace tokens are checked if they are passed in
+- Updated User-Agent to reflect new version</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 

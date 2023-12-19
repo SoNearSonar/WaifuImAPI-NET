@@ -5,7 +5,7 @@ namespace WaifuImAPI_NET.Tests;
 
 public class WaifuImAPI_Net_Test
 {
-    private readonly static string token = string.Empty;
+    private readonly static string token = "test_api_key";
 
     [TestClass]
     public class ImageTest
@@ -112,7 +112,7 @@ public class WaifuImAPI_Net_Test
         [TestMethod]
         public void GetFavoritesValidToken_ReturnsImage()
         {
-            WaifuImClient client = new WaifuImClient(string.Empty);
+            WaifuImClient client = new WaifuImClient(token);
             WaifuImSearchSettings settings = new WaifuImSearchSettings()
             {
                 IsNsfw = false,
@@ -174,7 +174,7 @@ public class WaifuImAPI_Net_Test
         [TestMethod]
         public void InsertFavoriteValidToken_ReturnsFavoriteStatus()
         {
-            WaifuImClient client = new WaifuImClient("api_key_here");
+            WaifuImClient client = new WaifuImClient(token);
             WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
             {
                 ImageId = 8005
@@ -235,7 +235,7 @@ public class WaifuImAPI_Net_Test
         [TestMethod]
         public void DeleteFavoriteValidToken_ReturnsFavoriteStatus()
         {
-            WaifuImClient client = new WaifuImClient("api_key_here");
+            WaifuImClient client = new WaifuImClient(token);
             WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
             {
                 ImageId = 8005
@@ -296,7 +296,7 @@ public class WaifuImAPI_Net_Test
         [TestMethod]
         public void ToggleFavoriteValidToken_ReturnsFavoriteStatus()
         {
-            WaifuImClient client = new WaifuImClient("api_key_here");
+            WaifuImClient client = new WaifuImClient(token);
             WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
             {
                 ImageId = 8005
@@ -328,7 +328,7 @@ public class WaifuImAPI_Net_Test
         }
 
         [TestMethod]
-        public void DeleteFavoriteInvalidToken_ReturnsFavoriteStatusJSON()
+        public void ToggleFavoriteInvalidToken_ReturnsError()
         {
             WaifuImClient client = new WaifuImClient("invalid_token");
             WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
@@ -339,6 +339,73 @@ public class WaifuImAPI_Net_Test
             try
             {
                 WaifuImFavorite favorite = client.ToggleFavoriteAsync(settings).Result;
+                Assert.Fail("This test case should not go here");
+            }
+            catch (AggregateException ex)
+            {
+                Assert.IsTrue(ex.InnerException is HttpRequestException);
+            }
+        }
+    }
+
+    [TestClass]
+    public class ReportTest
+    {
+        // This test requires a token from an account to use. Also is reliant on an image ID and description to exist
+        [Ignore]
+        [TestMethod]
+        public void ReportImageValidToken_ReturnsReportStatus()
+        {
+            WaifuImClient client = new WaifuImClient(token);
+            WaifuImReportSettings settings = new WaifuImReportSettings()
+            {
+                ImageId = 8005,
+                Description = "test"
+            };
+
+            WaifuImReport report = client.ReportImageAsync(settings).Result;
+
+            Assert.IsNotNull(report);
+            Assert.IsTrue(report.ImageId == 8005);
+            Assert.IsTrue(report.Description.Equals("test"));
+            Assert.IsNotNull(report.AuthorId);
+            Assert.IsTrue(report.Existed);
+        }
+
+        [TestMethod]
+        public void ReportImageEmptyToken_ReturnsError()
+        {
+            WaifuImClient client = new WaifuImClient();
+            WaifuImReportSettings settings = new WaifuImReportSettings()
+            {
+                ImageId = 8005,
+                Description = "test"
+            };
+
+            try
+            {
+                WaifuImReport report = client.ReportImageAsync(settings).Result;
+                Assert.Fail("This test case should not go here");
+            }
+            catch (AggregateException ex)
+            {
+                Assert.IsTrue(ex.InnerException is HttpRequestException);
+            }
+        }
+
+        [TestMethod]
+        public void ReportImageInvalidToken_ReturnsError()
+        {
+            WaifuImClient client = new WaifuImClient("test_api_key");
+            WaifuImReportSettings settings = new WaifuImReportSettings()
+            {
+                ImageId = 8005,
+                Description = "test"
+            };
+
+            try
+            {
+                WaifuImReport report = client.ReportImageAsync(settings).Result;
                 Assert.Fail("This test case should not go here");
             }
             catch (AggregateException ex)
