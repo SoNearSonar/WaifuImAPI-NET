@@ -154,5 +154,26 @@ WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
 {
 	ImageId = 0001
 };
+
 WaifuImFavorite favorite = await client.ToggleFavoriteAsync(settings);
+```
+
+## Reports
+Below are examples of C# API calls for reporting images
+
+NOTES: 
+- Favorites requires getting an Authorization token and storing it somewhere in any projects that are made. It is not recommended to store it as plain-text or on a open source repository. A token can be obtained from logging in [here](https://www.waifu.im/dashboard/)
+- Reporting images requires your waifu.im account to have the reporting permissions
+
+### Report Image
+Reporting an image:
+```csharp
+WaifuImClient client = new WaifuImClient("token");
+WaifuImReportSettings settings = new WaifuImReportSettings()
+{
+    ImageId = 0001,
+    Description = "This image does not have the right tags"
+};
+
+WaifuImReport report = await client.ReportImageAsync(settings);
 ```
