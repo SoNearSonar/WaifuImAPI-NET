@@ -10,7 +10,7 @@ Below are examples of C# API calls for getting images:
 
 Getting image(s) with default settings:
 ```csharp
-WaifuClient client = new WaifuClient();
+WaifuImClient client = new WaifuImClient();
 
 WaifuImImageList imageList = await client.GetImagesAsync();
 
@@ -25,7 +25,7 @@ foreach (WaifuImImage image in imageList.Images)
 
 Getting image(s) with user-set settings:
 ```csharp
-WaifuClient client = new WaifuClient();
+WaifuImClient client = new WaifuImClient();
 WaifuImSearchSettings settings = new WaifuImSearchSettings()
 {
 	ManyFiles = true,
@@ -40,7 +40,7 @@ WaifuImSearchSettings settings = new WaifuImSearchSettings()
 	IsNsfw = false
 };
 
-WaifuImImageList imageList = await client.GetImagesAsync();
+WaifuImImageList imageList = await client.GetImagesAsync(settings);
 
 foreach (WaifuImImage image in imageList.Images)
 {
@@ -56,7 +56,7 @@ Below are examples of C# API calls for getting tags:
 
 Getting list of simple tags (not full tags):
 ```csharp
-WaifuClient client = new WaifuClient();
+WaifuImClient client = new WaifuImClient();
 
 WaifuImTagList tagList = await client.GetTagsAsync();
 
@@ -68,7 +68,7 @@ foreach (Tags tag in tagList.VersatileTags)
 
 Getting list of full tags:
 ```csharp
-WaifuClient client = new WaifuClient();
+WaifuImClient client = new WaifuImClient();
 
 WaifuImFullTagList tagList = await client.GetFullTagsAsync();
 
@@ -91,7 +91,7 @@ Getting list of favorited images:
 ```csharp
 WaifuImClient client = new WaifuImClient("token");
 
-WaifuImImageList favImageList = client.GetFavoritesAsync();
+WaifuImImageList favImageList = await client.GetFavoritesAsync()	;
 
 foreach (WaifuImImage image in favImageList.Images)
 {
@@ -110,7 +110,7 @@ WaifuImSearchSettings settings = new WaifuImSearchSettings()
 	IsNsfw = false
 };
 
-WaifuImImageList favImageList = client.GetFavoritesAsync(settings);
+WaifuImImageList favImageList = await client.GetFavoritesAsync(settings);
 
 foreach (WaifuImImage image in favImageList.Images)
 {
@@ -133,6 +133,8 @@ WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
 };
 
 WaifuImFavorite favorite = await client.InsertFavoriteAsync(settings);
+
+Console.WriteLine("Favorite Status: " + favorite.FavoriteStatus);
 ```
 
 ### Delete Favorites
@@ -144,7 +146,9 @@ WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
 	ImageId = 0001
 };
 
-WaifuImFavorite favorite = await client.DeleteFavoriteAsync(settings)
+WaifuImFavorite favorite = await client.DeleteFavoriteAsync(settings);
+
+Console.WriteLine("Favorite Status: " + favorite.FavoriteStatus);
 ```
 
 ### Toggle Favorites
@@ -157,6 +161,8 @@ WaifuImFavoriteSettings settings = new WaifuImFavoriteSettings()
 };
 
 WaifuImFavorite favorite = await client.ToggleFavoriteAsync(settings);
+
+Console.WriteLine("Favorite Status: " + favorite.FavoriteStatus);
 ```
 
 ## Reports
@@ -164,7 +170,7 @@ Below are examples of C# API calls for reporting images
 
 NOTES: 
 - Favorites requires getting an Authorization token and storing it somewhere in any projects that are made. It is not recommended to store it as plain-text or on a open source repository. A token can be obtained from logging in [here](https://www.waifu.im/dashboard/)
-- Reporting images requires your waifu.im account to have the reporting permissions
+- Reporting images requires your waifu.im account to have image report permissions
 
 ### Report Image
 Reporting an image:
@@ -172,9 +178,14 @@ Reporting an image:
 WaifuImClient client = new WaifuImClient("token");
 WaifuImReportSettings settings = new WaifuImReportSettings()
 {
-    ImageId = 0001,
-    Description = "This image does not have the right tags"
+    	ImageId = 0001,
+    	Description = "This image does not have the right tags"
 };
 
 WaifuImReport report = await client.ReportImageAsync(settings);
+
+Console.WriteLine("Report Author ID: " + report.AuthorId);
+Console.WriteLine("Report Image ID: " + report.ImageId);
+Console.WriteLine("Report Existed: " + report.Existed);
+Console.WriteLine("Report Description: " + report.Description);
 ```
